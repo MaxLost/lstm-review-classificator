@@ -5,10 +5,11 @@ import torch
 
 
 def evaluate(model, text):
+    raw_text = "\"" + text + "\""
     text = model.data_loader.tokenize(text)
     text = model.data_loader.encode_text(text)
     rating = model(text)
-    print("Possible mark:", torch.argmax(rating) + 1)
+    print("Possible mark for", raw_text, "is:", torch.argmax(rating).item() + 1)
     return
 
 

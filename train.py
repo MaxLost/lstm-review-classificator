@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 class Trainer:
     def __init__(self, model):
-        self.epochs = 1
-        self.batch_size = 1000
+        self.epochs = 3
+        self.batch_size = 300
         self.learning_rate = 0.001
         self.model = model
         self.criterion = nn.CrossEntropyLoss()
@@ -54,7 +54,7 @@ class Trainer:
                 optimizer.step()
                 sum_loss += loss.item()
                 total += 1
-                if j % 100 == 0:
+                if j % 10 == 0:
                     val_loss, val_acc, val_rmse = self.train_validation(valid_batch)
                     total_loss.append(sum_loss / total)
                     print("Train loss %.3f | Value loss %.3f | Value accuracy %.3f | Value RMSE %.3f" % (
